@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sean's Workout Challenge Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1e1e2f;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    button {
+      background-color: #ff5e5e;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      margin: 10px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff3838;
+    }
+
+    .challenge-box {
+      background-color: #2d2d44;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 500px;
+      margin: 20px auto;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    #timer {
+      font-size: 2rem;
+      margin: 10px 0;
+      color: #00ffaa;
+    }
+
+    #saved-challenges {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+    }
+
+    #saved-challenges li {
+      background-color: #3d3d5c;
+      padding: 10px;
+      border-radius: 6px;
+      margin: 5px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .delete-btn {
+      background-color: #aa0000;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background-color: #cc0000;
+    }
+
+    a {
+      color: #ff5e5e;
+      margin-top: 30px;
+      display: inline-block;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🏋️Sean's Workout Challenge Generator</h1>
+  <p>Push your limits with a random challenge!</p>
+
+  <div class="challenge-box">
+    <button onclick="generateChallenge()">Generate Challenge</button>
+    <p id="challenge-text"></p>
+
+    <div id="timer">00:00</div>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="stopTimer()">Stop</button>
+    <button onclick="resetTimer()">Reset</button><br><br>
+
+    <button onclick="saveChallenge()">Save Challenge</button>
+  </div>
+
+  <h2>💾 Saved Challenges</h2>
+  <ul id="saved-challenges"></ul>
+
+  <a href="scratch.html">← Back to Scratch Page</a>
+
+  <script>
+    const challenges = [
+      "50 push-ups in under 2 minutes",
+      "100 bodyweight squats without stopping",
+      "5 minutes of plank hold",
+      "20 burpees for time",
+      "1-minute wall sit, 3 rounds",
+      "50 jumping lunges",
+      "Run 1 mile as fast as possible",
+      "10 handstand push-ups",
+      "2-minute jump rope sprint",
+      "Max pull-ups in 3 minutes"
+    ];
+
+    function generateChallenge() {
+      const random = challenges[Math.floor(Math.random() * challenges.length)];
+      document.getElementById("challenge-text").innerText = random;
+    }
+
+    let timerInterval;
+    let time = 0;
+
+    function updateTimerDisplay() {
+      const minutes = String(Math.floor(time / 60)).padStart(2, '0');
+      const seconds = String(time % 60).padStart(2, '0');
+      document.getElementById("timer").innerText = `${minutes}:${seconds}`;
+    }
+
+    function startTimer() {
+      if (timerInterval) return;
+      timerInterval = setInterval(() => {
+        time++;
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    function resetTimer() {
+      stopTimer();
+      time = 0;
+      updateTimerDisplay();
+    }
+
+    function saveChallenge() {
+      const text = document.getElementById("challenge-text").innerText;
+      if (!text) return;
+
+      const li = document.createElement("li");
+      li.textContent = text;
+
+      const btn = document.createElement("button");
+      btn.textContent = "Delete";
+      btn.className = "delete-btn";
+      btn.onclick = () => li.remove();
+
+      li.appendChild(btn);
+      document.getElementById("saved-challenges").appendChild(li);
+    }
+
+    updateTimerDisplay();
+  </script>
+</body>
+</html>

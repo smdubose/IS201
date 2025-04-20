@@ -1,0 +1,139 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body.background {
+    background-color: #0e1a1f;
+    color: #ffffff; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+  }
+  
+  .header {
+    margin-bottom: 2rem;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+    color: #00ffff; 
+  }
+  
+  .header p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin: 0.5rem 0 1rem;
+  }
+  
+  nav a {
+    color: #00ffff;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-weight: bold;
+  }
+  
+  nav a:hover {
+    color: #ff00cc;
+  }
+  
+  .image-block {
+    margin: 2rem 0;
+  }
+  
+  .image-block img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00ffff44;
+  }
+  
+  .lists {
+    margin: 2rem 0;
+    text-align: left;
+    color: #ffffff;
+  }
+  
+  .lists h2 {
+    text-align: center;
+    color: #00ffff;
+    margin-bottom: 1rem;
+  }
+  
+  ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  ul {
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  
+  .video {
+    margin: 3rem 0;
+  }
+  
+  .video h2 {
+    color: #00ffff;
+    margin-bottom: 1rem;
+  }
+  
+  iframe {
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00ffff44;
+    max-width: 100%;
+  }
+  
+  
+  .tableau {
+    margin: 3rem 0;
+  }
+  
+  .tableau h2 {
+    color: #00ffff;
+    margin-bottom: 1rem;
+  }
+  
+  
+  footer {
+    margin-top: 2rem;
+  }
+  
+  footer a {
+    color: #00ffff;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    color: #ff00cc;
+  }
+  .tableau {
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .tableauPlaceholder {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .tableauPlaceholder object {
+    margin: auto;
+  }
+  
